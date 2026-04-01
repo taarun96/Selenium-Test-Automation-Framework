@@ -122,7 +122,7 @@ public abstract class BrowserUtility {
 	    TakesScreenshot screenshot = (TakesScreenshot) driver.get();
 
 	    File screenshotData = screenshot.getScreenshotAs(OutputType.FILE);
-	    String path = System.getProperty("user.dir") + "//screenshots//" + name + ".png";
+	    String path = "./screenshots/" + name + ".png";
 	    File screenshotFile = new File(path);
 
 	    try {
