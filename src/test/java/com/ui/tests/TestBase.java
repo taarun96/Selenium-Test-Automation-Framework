@@ -1,6 +1,6 @@
 package com.ui.tests;
 
-import static com.constants.Browser.*;
+
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +11,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.constants.Browser;
+import static com.constants.Browser.CHROME;
 import com.ui.pages.HomePage;
 import com.utility.BrowserUtility;
 import com.utility.LambdaTestUtility;
@@ -20,7 +21,7 @@ public class TestBase {
     protected HomePage homePage;
     Logger logger = LoggerUtility.getLogger(this.getClass());
     private boolean isLambdaTest ;
-
+    Browser browserEnum;
 
     @BeforeMethod(description = "Load the Homepage of the website")
     @Parameters({"browser","isLambdaTest","isHeadless"})
@@ -40,7 +41,16 @@ public class TestBase {
         } else {
             // Running the test on local machine!!!
             logger.info("Load the Homepage of the website");
-            homePage = new HomePage(Browser.valueOf(browser.toUpperCase()), isHeadless);
+
+            try {
+                browserEnum = Browser.valueOf(browser.trim().toUpperCase());
+            } catch (Exception e) {
+                browserEnum = Browser.CHROME;
+            }
+            homePage = new HomePage(browserEnum, isHeadless);
+            
+       
+
         }
     }
 
