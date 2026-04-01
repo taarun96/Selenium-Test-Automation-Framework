@@ -1,9 +1,5 @@
 {
   "data": [
-	{
-		"emailAddress": "test@smkanba.com",
-	     "password": "password"
-	 },
     {
       	"emailAddress": "memero1542@smkanba.com",
       	"password": "password"
