@@ -27,7 +27,8 @@ jobs:
       run: mvn test -X -Dbrowser=chrome -DisLambdaTest=true -Disheadless=false
     
     - name: Upload Test Logs
-      uses: actions/upload-artifact@v3.2.2
+      if: always()
+      uses: actions/upload-artifact@v4.4.3
       with:
        name: Test Logs
        path: logs/
